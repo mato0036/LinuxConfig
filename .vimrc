@@ -3,9 +3,6 @@ set nocompatible
 syntax enable
 filetype plugin on
 
-" Change <Leader>
-""let mapleader = ","
-
 set splitright
 set hidden          " Hide buffer when another is opened
 set title           " Enable better title with file, mode and path
@@ -41,29 +38,12 @@ set hlsearch        " Highlight as characters are writen"
 set incsearch       " Hightlight match
 
 
-""filetype plugin on
-
-" Autosave - save file when focus is lost
-""au FocusLost * :wa
-""augroup OmniCompletionSetup
-""    autocmd!
-""    autocmd FileType c          set omnifunc=ccomplete#Complete
-""    autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
-""    autocmd FileType python     set omnifunc=python3complete#Complete
-""    autocmd FileType ruby       set omnifunc=rubycomplete#Complete
-""    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-""    autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-""    autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-""    autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
-""augroup END
+autocmd FileType tex set tw=80
 
 
 set t_Co=256
 set termguicolors
-""let ayucolor="dark"
-""colorscheme ayu
 colorscheme darkburn
-"colorscheme spacecamp_lite
 
 
 " Make comments italic
@@ -85,17 +65,6 @@ set wildmenu
 command! MakeTags !ctags -R . 
 " Set path to my generated system tags (mostly C)
 set tags+=~/.vim/systags
-" ^] to jump to tag under cursor
-" g^] for ambiguous tags
-" ^t tu jump back up the tag stack
-
-
-" --------------------- AUTOCOMPLETE ---------------------
-" ^x^n for JUST this file
-" ^x^f for filenames
-" ^x^] for tags
-" ^n for anything to complete
-" ^e for exit autocomplete and stay in insert mode
 
 
 " --------------------- FILE BROWSING ---------------------
@@ -111,34 +80,18 @@ let g:netrw_altv=1			" open splits to the right
 inoremap {<CR> {<CR>}<Esc>O
 inoremap { {}<Esc>i
 inoremap {; {<CR>};<Esc>O
-" insert second symbol and put input in the middle + features
+" Insert second symbol and put input in the middle + features
 inoremap ( ()<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 inoremap [ []<Esc>i
 inoremap [; [<CR>];<Esc>O
-" comment actual line
-map <C-/>/ <Esc>I//<Esc>
+" Comment line (CTRL-/)
+nnoremap <C-_> I//<Esc>
 " Newline
 nnoremap <C-j> o<ESC>k
 nnoremap <C-k> O<ESC>j
 " Jump to end of parenthesis/brackets/quotes
-inoremap <C-e> <C-o>A
-
+inoremap <C-e> <Esc>A
+" No highlight
 nnoremap <leader><space> :noh<CR>
-
-
-
-" Map Tab as Esc
-" https://vim.fandom.com/wiki/Avoid_the_escape_key
-"nnoremap <Tab> <Esc>
-"" gV prevent automatic reselection
-"vnoremap <Tab> <Esc>gV  
-"onoremap <Tab> <Esc>
-"cnoremap <Tab> <C-C><Esc>
-"" `^ restores cursor position
-"inoremap <Tab> <Esc>`^
-"" Use normal tab 
-"inoremap <Leader><Tab> <Tab>
-"" Clean searched highlighted words
-"nnoremap <leader><space> :noh<cr>
