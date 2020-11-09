@@ -16,15 +16,15 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-#bindsym $mod+d exec --no-startup-id "rofi -show run"
+bindsym $mod+d exec --no-startup-id "rofi -show run"
 # start rofi (a program launcher)
-bindsym $mod+d exec ~/.config/rofi/launchers/launcher.sh
+#bindsym $mod+d exec ~/.config/rofi/launchers/launcher.sh
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -162,6 +162,7 @@ assign [class="Thunderbird"] $ws6
 #assign [class="Spotify Premium"] $ws5
 for_window [class="Spotify"] move to workspace $ws5
 assign [class="vlc"] $ws7
+assign [class="discord"] $ws8
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -203,7 +204,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
+#bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
@@ -245,9 +246,9 @@ exec --no-startup-id clipit
 exec --no-startup-id xset -b
 # Status bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id start_conky_maia
-exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock -detectsleep
+# exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_green
+exec --no-startup-id xautolock -time 60 -locker blurlock -detectsleep
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -288,7 +289,7 @@ set_from_resource $term_color15    color15
 #############################
 
 # Set inner/outer gaps
-gaps inner 5
+gaps inner 3
 gaps outer -3
 
 # Smart gaps (gaps used if only more than one container on the workspace)

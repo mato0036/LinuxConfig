@@ -7,7 +7,7 @@ background = #bb212121
 foreground = #c4c7d1
 modules-left = i3 separator spotify
 modules-center =
-modules-right = memory cpu pulseaudio wlan backlight battery xkeyboard date
+modules-right = memory cpu pulseaudio system-bluetooth-bluetoothctl wlan backlight battery xkeyboard date
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -16,8 +16,8 @@ modules-right = memory cpu pulseaudio wlan backlight battery xkeyboard date
 [module/memory]
 type = internal/memory
 internal = 1
-format = <label>
-label =   %mb_used%
+format =  <label>%
+label = %percentage_used%
 
 [module/cpu]
 type = internal/cpu
@@ -59,6 +59,11 @@ ramp-2 = 
 ramp-3 = 
 ramp-4 = 
 
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 
 [module/wlan]
 type = internal/network

@@ -52,7 +52,7 @@ HYPHEN_INSENSITIVE="true"
 DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -66,7 +66,16 @@ plugins=(git colorize command-not-found zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
 export EDITOR=vim
+# Taskwarrior
+export TASKRC=~/.config/taskwarrior/.taskrc
+export TASKDATA=~/.config/taskwarrior/data
 
 alias vimhelp="vim ~/Documents/vim_commands.md"
 alias dots='/usr/bin/git --git-dir=$HOME/.dotFiles/ --work-tree=$HOME'
+alias volatility='python ~/Programs/volatility3/vol.py'
