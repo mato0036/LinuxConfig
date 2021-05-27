@@ -22,7 +22,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -show run"
+bindsym $mod+d exec --no-startup-id "rofi -show run -modi 'run,calc,ssh'"
+bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort -calc-command \\"echo -n '{result}' | clipcopy\\""
 # start rofi (a program launcher)
 #bindsym $mod+d exec ~/.config/rofi/launchers/launcher.sh
 
@@ -203,7 +204,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Set shut down, restart and locking features
+# Set shut down, restart and ocking features
 #bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
@@ -234,7 +235,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec --no-startup-id lock_time
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

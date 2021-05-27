@@ -31,4 +31,5 @@ data.location=~/.config/taskwarrior/data
 
 context.University=+uni or +study or +school or +BIS or +BMS or +UPA or +SUI or +MSP or +TIN
 context.Home=-uni -study -school -BIS -BMS -UPA -SUI -MSP -TIN
-context=University
+context=Home
+
